@@ -86,7 +86,7 @@ function quit(){
  function help(){
    console.log('  hello  --Says hello\n')
    console.log('  help  --Lists all the possible commands\n')
-   console.log('  hello  --Exits the application\n')
+   console.log('  quit  --Exits the application\n')
  }
 
 
