@@ -40,6 +40,9 @@ function onDataReceived(text) {
   else if(text === 'hello\n'){
     hello();
   }
+  else if(text === 'help\n'){
+    help();
+  }
   else{
     unknownCommand(text);
   }
@@ -77,6 +80,15 @@ function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
+/** 
+ * @returns {void}
+*/
+ function help(){
+   console.log('  hello  --Says hello\n')
+   console.log('  help  --Lists all the possible commands\n')
+   console.log('  hello  --Exits the application\n')
+ }
+
 
 // The following line starts the application
 startApp("Dalia Dandashi")
