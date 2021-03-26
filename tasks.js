@@ -45,6 +45,7 @@ function onDataReceived(text) {
     hello();}
   else if(split[0] === 'hello'){
       hello(split[1]);
+      hello(split[0],split[1]);
   }
   else if(text === 'help\n'){}
   else if (split[0] === 'help'){
@@ -75,13 +76,18 @@ function unknownCommand(c){
 /**
  * Says hello
  * @param {string } x the name beside hello
+ * @param {string } x hello
+ * @param {string } y the name beside hello
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
 function hello(x){
   console.log('hello ' + x + '!');
-}
+function hello(x,y){
+  if (typeof y != "undefined"){
+    console.log('hello ' + y + '!');
+  }
+  else
+  console.log('hello!')
 }
 
 
@@ -106,3 +112,5 @@ function quit(){
 
 // The following line starts the application
 startApp("Dalia Dandashi")
+}
+G
