@@ -34,25 +34,25 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-   if (text === 'quit\n' || text === 'exit\n') {
-     text = text.replace('\n','');
-     var split = text.trim().split(' ');}
-   if (split[0] === 'quit' || split[0] === 'exit') {
-    quit();
-  }
+   text = text.replace('\n','').trim();
+     var text0 = text.substring(0,text.indexOf(' '))
+     var text1 = text.substring(text.indexOf(' ')+1)
+    if ( text0 === 'quit' || text0 === 'exit' || text === 'quit' || text ==='exit') {
+       quit();
+    }
 
-  else if(text === 'hello\n'){
-    hello();}
-  else if(split[0] === 'hello'){
-      hello(split[1]);
-      hello(split[0],split[1]);
-  }
-  else if(text === 'help\n'){}
-  else if (split[0] === 'help'){
-    help();
-  }
-  else if(split[0] === 'list'){
-    list();
+    else if(text0 === 'hello' || text === 'hello'){
+      hello(text0, text1);
+    }
+  
+    else if (text0 === 'help' || text === 'help'){
+      help();
+    }
+    else if(text0 === 'list' || text === 'list'){
+      list();
+    }
+    else if(text0 === 'add' || text === 'add'){
+      add(text1);
     }
 
   else{
@@ -83,15 +83,18 @@ function unknownCommand(c){
  * @param {string } y the name beside hello
  * @returns {void}
  */
-function hello(x){
-  console.log('hello ' + x + '!');
-function hello(x,y){
-  if (typeof y != "undefined"){
-    console.log('hello ' + y + '!');
-  }
-  else
-  console.log('hello!')
+ function hello(x,y){
+  console.log(x + ' ' + y +'!');
 }
+var tasks=['buy bread', 'do exercise']
+/**
+ * add new tasks
+ * @param  {string} task the new task
+ * @returns {void}
+ */
+function add(task){
+  tasks.push(task);
+ }
 
 
 /**
@@ -112,7 +115,7 @@ function quit(){
    console.log('     help               --Lists all the possible commands\n')
    console.log('     quit/exit          --Exits the application\n')
   }
-  var tasks=['buy bread', 'do exercise']
+  
 /**
  * Lists all tasks
  *
@@ -127,4 +130,4 @@ function quit(){
 
 // The following line starts the application
 startApp("Dalia Dandashi")
-}
+
