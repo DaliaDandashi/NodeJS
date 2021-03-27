@@ -52,9 +52,12 @@ function onDataReceived(text) {
       list();
     }
     else if(text0 === 'add' || text === 'add'){
-      add(text1);
+      add(text,text1);
     }
-
+    else if(text0 === 'remove' || text === 'remove'){
+      remove(text, text1);
+    }
+    
   else{
     unknownCommand(text);
   }
@@ -92,10 +95,26 @@ var tasks=['buy bread', 'do exercise']
  * @param  {string} task the new task
  * @returns {void}
  */
-function add(task){
-  tasks.push(task);
+ function add(text, task){
+  if (text === 'add'){
+    console.log("Error: You didn't enter the task")
+  }
+  else tasks.push(task);
  }
 
+ /**
+ * removes the last task
+ *
+ * @returns {void}
+ */
+function remove(task, number){
+  if (task === 'remove'){
+  tasks.splice(-1);
+}
+else {
+  tasks.splice(parseInt(number)-1, 1)
+}
+}
 
 /**
  * Exits the application
