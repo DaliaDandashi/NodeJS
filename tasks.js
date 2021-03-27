@@ -89,7 +89,9 @@ function unknownCommand(c){
  function hello(x,y){
   console.log(x + ' ' + y +'!');
 }
+
 var tasks=['buy bread', 'do exercise']
+
 /**
  * add new tasks
  * @param  {string} task the new task
@@ -129,10 +131,14 @@ function quit(){
  * @returns {void}
 */
  function help(){
-   console.log('     hello              --Says hello!\n')
-   console.log('     hello + name       --Says hello + name!\n')
-   console.log('     help               --Lists all the possible commands\n')
-   console.log('     quit/exit          --Exits the application\n')
+   console.log('     hello                --Says hello!\n')
+   console.log('     hello <name>         --Says hello + name!\n')
+   console.log('     help                 --Lists all the possible commands\n')
+   console.log('     list                 --Lists all tasks\n')
+   console.log('      add <task>           --Adds a task to the list of tasks\n')
+   console.log('      remove               --removes the last task\n')
+   console.log('      remove <task number> --removes the task of this number\n')
+   console.log('     quit/exit            --Exits the application\n')
   }
   
 /**
