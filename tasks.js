@@ -197,10 +197,14 @@ function quit(){
    console.log('     hello <name>         --Says hello + name!\n')
    console.log('     help                 --Lists all the possible commands\n')
    console.log('     list                 --Lists all tasks\n')
-   console.log('      add <task>           --Adds a task to the list of tasks\n')
-   console.log('      remove               --removes the last task\n')
-   console.log('      remove <task number> --removes the task of this number\n')
-   console.log('     quit/exit            --Exits the application\n')
+   console.log('     add <task>           --Adds a task to the list of tasks\n')
+   console.log('     remove               --removes the last task\n')
+   console.log('     remove <task number> --removes the task of this number\n')
+   console.log('     edit <new task>                  --Changes the last task to "new task"\n')
+   console.log('     edit <task number> <new task>    --Changes this task to "new task"\n')
+   console.log('     check <task number>              --Marks this task as done\n')
+   console.log('     uncheck <task number>            --Marks this task as undone\n')
+   console.log('     quit/exit                        --Exits the application\n')
   }
   
   const i=[]
