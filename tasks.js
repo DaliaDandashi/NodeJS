@@ -92,6 +92,11 @@ function unknownCommand(c){
 
 var tasks=['buy bread', 'do exercise']
 
+const i=[];
+tasks.forEach(function callback(value, index) {
+  i[index]=index+1;
+});
+
 /**
  * add new tasks
  * @param  {string} task the new task
@@ -111,10 +116,14 @@ var tasks=['buy bread', 'do exercise']
  */
 function remove(task, number){
   if (task === 'remove'){
-  tasks.splice(-1);
+   tasks.splice(-1);
 }
-else {
-  tasks.splice(parseInt(number)-1, 1)
+  else{
+
+  if (i.includes(parseInt(number))){
+   tasks.splice(parseInt(number)-1, 1);}
+  else console.log('the number entered does not exist')
+  
 }
 }
 
@@ -148,7 +157,7 @@ function quit(){
  */
   function list(){
    tasks.forEach(function callback(value, index) {
-    console.log(index+1 + '- [ ] ' + value);
+    console.log(index+1 + ' - [ ] ' + value);
    });
 }
 
