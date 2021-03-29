@@ -1,7 +1,7 @@
 [
     {
       "task": "buy bread",
-      "done": false
+      "done": true
     },
     {
       "task": "do exercise",
@@ -13,11 +13,7 @@
     },
     {
       "task": "take a nap",
-      "done": false
-    },
-    {
-        "task": "complete the codi's challenge",
-        "done": true
-      }
+      "done":true
+     }
 
   ]

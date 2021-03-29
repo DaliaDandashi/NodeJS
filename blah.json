@@ -1,0 +1,18 @@
+[
+    {
+      "task": "update trello board",
+      "done": false
+    },
+    {
+      "task": "take a nap",
+      "done": false
+    },
+    {
+      "task": "complete the codi's challenge",
+      "done": true
+    },
+    {
+      "task": "testing",
+      "done": true
+    }
+  ] 

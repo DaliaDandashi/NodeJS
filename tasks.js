@@ -1,7 +1,18 @@
 
 var fs = require ('fs');
-var data = fs.readFileSync('database.json');
-var tasks = JSON.parse(data);
+
+try{
+  if (fs.existsSync(process.argv[2])){
+    var data = fs.readFileSync(process.argv[2]);
+  }else{
+    var data = fs.readFileSync('database.json');
+  }
+  var tasks = JSON.parse(data);
+}
+catch(err){
+  console.error(err);
+}
+
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -93,7 +104,6 @@ function unknownCommand(c){
 
 /**
  * Says hello
- * @param {string } x the name beside hello
  * @param {string } x hello
  * @param {string } y the name beside hello
  * @returns {void}
@@ -126,7 +136,7 @@ function remove(task, number){
 }
   else{
 
-  if (parseInt(number)<= i.length+1){
+  if (parseInt(number)<= tasks.length+1){
    tasks.splice(parseInt(number)-1, 1);}
   else console.log('Error:the number entered does not exist')
   
@@ -163,8 +173,13 @@ function check(text, number){
   if (text === 'check'){
     console.log("Error: You didn't enter the number of task")
   }
-  else tasks[number-1].done=true;
+  else {
+    if (parseInt(number)<= tasks.length){
+      tasks[number-1].done = true;
+    }else console.log('Error: the number entered does not exist')
+  }
  }
+ 
 
 /**
  * uncheck tasks
@@ -175,8 +190,11 @@ function uncheck(text, number){
   if (text === 'uncheck'){
     console.log("Error: You didn't enter the number of task")
   }
-  else tasks[number-1].done=false;
- }
+  if (parseInt(number)<= tasks.length){
+    tasks[number-1].done = false;
+  }else console.log('Error: the number entered does not exist')
+  }
+ 
 
 
 /**
@@ -185,8 +203,12 @@ function uncheck(text, number){
  * @returns {void}
  */
 function quit(){
+
   var data= JSON.stringify(tasks, null, 2)
-  fs.writeFileSync('database.json',data, 'utf8');
+  if (fs.existsSync(process.argv[2])){
+    fs.writeFileSync(process.argv[2],data, 'utf8');
+
+  }else fs.writeFileSync('database.json',data, 'utf8');
   console.log('Quitting now, goodbye!')
   process.exit();
 }
@@ -194,21 +216,21 @@ function quit(){
  * @returns {void}
 */
  function help(){
-   console.log('     hello                --Says hello!\n')
-   console.log('     hello <name>         --Says hello + name!\n')
-   console.log('     help                 --Lists all the possible commands\n')
-   console.log('     list                 --Lists all tasks\n')
-   console.log('     add <task>           --Adds a task to the list of tasks\n')
-   console.log('     remove               --removes the last task\n')
-   console.log('     remove <task number> --removes the task of this number\n')
-   console.log('     edit <new task>                  --Changes the last task to "new task"\n')
-   console.log('     edit <task number> <new task>    --Changes this task to "new task"\n')
-   console.log('     check <task number>              --Marks this task as done\n')
-   console.log('     uncheck <task number>            --Marks this task as undone\n')
-   console.log('     quit/exit                        --Exits the application\n')
+   console.log('     --hello                Says hello!\n')
+   console.log('     --hello <name>         Says hello + name!\n')
+   console.log('     --help                 Lists all the possible commands\n')
+   console.log('     --list                 Lists all tasks\n')
+   console.log('     --add <task>           Adds a task to the list of tasks\n')
+   console.log('     --remove               removes the last task\n')
+   console.log('     --remove <task number>             removes the task of this number\n')
+   console.log('     --edit <new task>                  Changes the last task to "new task"\n')
+   console.log('     --edit <task number> <new task>    Changes this task to "new task"\n')
+   console.log('     --check <task number>              Marks this task as done\n')
+   console.log('     --uncheck <task number>            Marks this task as undone\n')
+   console.log('     --quit/exit                        Exits the application\n')
   }
   
-  const i=[]
+ 
 /**
  * Lists all tasks
  *
@@ -217,7 +239,7 @@ function quit(){
   function list(){
 
     tasks.forEach(function callback(item, index) {
-      i[index] = index+1;
+     
     if (item.done == true){
       console.log(index+1 + ' - [✓] ' + item.task);
     }else{ 
