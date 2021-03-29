@@ -1,4 +1,7 @@
 
+var fs = require ('fs');
+var data = fs.readFileSync('database.json');
+var tasks = JSON.parse(data);
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -98,10 +101,6 @@ function unknownCommand(c){
  function hello(x,y){
   console.log(x + ' ' + y +'!');
 }
-var tasks=[
-            {task: 'buy bread', done: false},
-            {task: 'do exercise', done: false}
-          ];
 
 /**
  * add new tasks
@@ -186,6 +185,8 @@ function uncheck(text, number){
  * @returns {void}
  */
 function quit(){
+  var data= JSON.stringify(tasks, null, 2)
+  fs.writeFileSync('database.json',data, 'utf8');
   console.log('Quitting now, goodbye!')
   process.exit();
 }

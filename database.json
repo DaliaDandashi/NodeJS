@@ -1,0 +1,23 @@
+[
+    {
+      "task": "buy bread",
+      "done": false
+    },
+    {
+      "task": "do exercise",
+      "done": false
+    },
+    {
+      "task": "update trello board",
+      "done": false
+    },
+    {
+      "task": "take a nap",
+      "done": false
+    },
+    {
+        "task": "complete the codi's challenge",
+        "done": true
+      }
+
+  ]
